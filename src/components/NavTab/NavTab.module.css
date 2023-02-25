@@ -1,0 +1,37 @@
+.Container {
+    height: 66px;
+    background-color: var(--color);
+    color: var(--primary-bg-color);
+}
+
+.Menu {
+    display: flex;
+    margin: 0;
+    padding: 24px 0;
+    column-gap: 40px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.Menu__Item {
+    font-size: 13px;
+    line-height: 1.23;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.Menu__Item:hover {
+    text-decoration-line: none;
+}
+
+@media screen and (max-width: 320px) {
+    .Menu {
+        column-gap: 24px;
+    }
+
+    .Menu__Item {
+        font-size: 11px;
+        line-height: 1.45;
+    }
+}

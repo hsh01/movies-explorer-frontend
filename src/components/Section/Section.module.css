@@ -1,0 +1,35 @@
+.Container {
+    padding: 110px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Container__Primary {
+    background-color: var(--primary-bg-color);
+}
+
+.Container__Secondary {
+    background-color: var(--secondary-bg-color);
+}
+
+.Header {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+    padding-bottom: 23px;
+    border-bottom: solid 1px var(--color);
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .Container {
+        padding: 90px 60px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Container {
+        padding: 70px 18px;
+    }
+}

@@ -1,0 +1,43 @@
+.Container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+    height: 524px;
+    background-color: var(--primary-color);
+    background-image: url("../../images/logo-promo.svg");
+    background-size: 320px 320px;
+    background-repeat: no-repeat;
+    background-position: center 82px;
+    box-sizing: border-box;
+}
+
+.Header {
+    color: var(--primary-bg-color);
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    text-align: center;
+    letter-spacing: -0.04em;
+    max-width: 730px;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .Container {
+        height: 784px;
+        padding: 0;
+        background-position: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Container {
+        height: 570px;
+        background-size: 248px 248px;
+    }
+
+    .Header {
+        font-size: 31px;
+        line-height: 1.26;
+    }
+}

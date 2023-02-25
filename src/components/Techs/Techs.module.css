@@ -1,0 +1,58 @@
+.Title {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+    text-align: center;
+    padding-top: 90px;
+    margin: 0 0 26px;
+}
+
+.Text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.Snippets {
+    margin: 100px auto 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+.Snippet {
+    background-color: #E8E8E8;
+    border-radius: 10px;
+    width: 90px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .Snippet {
+        width: 84px;
+        height: 57px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Title {
+        font-size: 30px;
+        line-height: 36px;
+        padding-top: 60px;
+        margin: 0 0 24px;
+    }
+
+    .Snippets {
+        margin: 50px auto 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
