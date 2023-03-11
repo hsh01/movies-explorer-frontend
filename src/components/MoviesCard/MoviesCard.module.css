@@ -1,0 +1,49 @@
+.Container {
+    display: grid;
+    justify-content: space-between;
+    align-items: start;
+    align-content: space-between;
+    gap: 14px;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 1fr 24px;
+}
+
+.Thumbnail {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+.Name {
+    margin: 0;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    overflow-wrap: break-word;
+}
+
+.Button {
+    background: #F5F5F5 url("../../images/unliked.svg") no-repeat center;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+}
+
+.Button_Type_Liked {
+    background: #F5F5F5 url("../../images/liked.svg") no-repeat center;
+}
+
+.Button_Type_Remove {
+    background: #F5F5F5 url("../../images/remove.svg") no-repeat center;
+}
+
+.Duration {
+    grid-column: 1 / -1;
+    color: #A0A0A0;
+    font-size: 11px;
+    line-height: 13px;
+    border-top: solid 1px #E8E8E8;
+    align-self: self-end;
+    padding-top: 6px;
+}

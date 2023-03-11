@@ -1,12 +1,12 @@
 import React from "react";
 import styles from './Main.module.css';
-import { Header } from "../Header";
-import { Promo } from "../Promo";
-import { NavTab } from "../NavTab";
-import { AboutProject } from "../AboutProject";
-import { Techs } from "../Techs";
-import { AboutMe } from "../AboutMe";
-import { Footer } from "../Footer";
+import { Header } from "../../components/Header";
+import { Promo } from "../../components/Promo";
+import { NavTab } from "../../components/NavTab";
+import { AboutProject } from "../../components/AboutProject";
+import { Techs } from "../../components/Techs";
+import { AboutMe } from "../../components/AboutMe";
+import { Footer } from "../../components/Footer";
 
 const Main: React.FC = () => {
     const navTabLinks = [
@@ -26,7 +26,7 @@ const Main: React.FC = () => {
 
     return (
         <div className={styles.Container}>
-            <Header/>
+            <Header theme='dark'/>
             <Promo/>
             <NavTab links={navTabLinks}/>
             <AboutProject/>

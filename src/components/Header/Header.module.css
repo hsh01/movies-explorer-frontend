@@ -2,16 +2,34 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--primary-color);
     height: 74px;
-    padding: 0 60px;
+    padding: 0 70px;
     margin: 0;
 }
 
-.Logo {
-    background-image: url('../../images/logo-main.svg');
-    width: 38px;
-    height: 38px;
+.Container_Theme_Dark {
+    background-color: var(--primary-color);
+}
+
+.Menu {
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+}
+
+.ProfileWrapper {
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+}
+
+.Menu_Type_Main {
+    display: flex;
+    column-gap: 20px;
+}
+
+.Menu_Button {
+    display: none;
 }
 
 .Buttons {
@@ -20,21 +38,46 @@
 }
 
 .Button {
-    width: 76px;
     border: none;
     padding: 8px 0;
     border-radius: 3px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .Button__Primary {
     background-color: var(--secondary-color);
     color: var(--color);
+    padding: 8px 20px;
 }
 
 .Button__Secondary {
     background-color: transparent;
     color: var(--primary-bg-color);
+}
+
+.Button__Profile {
+    background-color: transparent;
+    color: var(--color);
+    display: flex;
+    align-items: center;
+    column-gap: 17px;
+}
+
+.ProfileIcon {
+    background-image: url(../../images/profile.svg);
+    background-color: var(--secondary-bg-color);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+    padding: 8px;
+    width: 12px;
+    height: 14px;
+}
+
+.Button__MenuItem {
+    background-color: transparent;
+    color: var(--color);
 }
 
 .Button__Primary:hover {
@@ -51,9 +94,103 @@
         padding: 0 30px;
     }
 
-    .Logo {
-        background-image: url('../../images/logo-secondary.svg');
+    .Buttons {
+        visibility: hidden;
     }
+
+    .Menu_Button {
+        background: #FFF url('../../images/menu.svg');
+        content: '';
+        height: 44px;
+        width: 44px;
+        visibility: visible;
+        display: block;
+        border: none;
+    }
+
+    .Menu_Button_Open {
+        background: #FFF url('../../images/close.svg') no-repeat center;
+        z-index: 2;
+    }
+    .Menu {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 66vw;
+        height: calc(100vh - 150px);
+        background-color: #fff;
+        z-index: 1;
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: 100px 0 50px;
+    }
+
+    .Menu_Open {
+        display: flex;
+        visibility: visible;
+    }
+
+    .Menu:before {
+        background: #FFF url('../../images/close.svg') no-repeat center;
+        z-index: 2;
+        content: '';
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .Menu:after {
+        content: '';
+        height: 100vh;
+        width: 34vw;
+        opacity: 0.6;
+        background-color: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+    .Menu_Type_Main {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        column-gap: 50px;
+        align-items: center;
+    }
+
+    .Button__MenuItem {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .Button__MenuItem_Active {
+        text-underline-offset: 10px;
+        text-decoration: underline;
+    }
+
+    .Button__Profile {
+        flex-direction: row-reverse;
+        column-gap: 7px;
+        padding: 0 7px;
+        border: 1px solid #AAA;
+        border-radius: 50px;
+        align-items: center;
+    }
+
+    .ProfileIcon {
+        background-color: #fff;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    .Buttons > .Button__Primary, .Buttons > .Button__Secondary {
+        visibility: visible;
+    }
+
 }
 
 @media screen and (max-width: 320px) {
@@ -63,5 +200,23 @@
 
     .Buttons {
         column-gap: 14px;
+    }
+
+    .Menu {
+        display: none;
+    }
+
+    .Menu_Open {
+        display: flex;
+        width: 100vw;
+    }
+
+    .Menu_Open::after {
+        width: 0;
+        height: 0;
+    }
+
+    .Menu_Type_Main {
+        display: flex;
     }
 }

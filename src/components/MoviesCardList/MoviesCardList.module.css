@@ -1,0 +1,46 @@
+.MoviesCardList {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 160px;
+}
+
+.Container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(251px, 1fr));
+    grid-gap: 38px 20px;
+    margin: 70px;
+    justify-items: stretch;
+}
+
+.ButtonMore {
+    padding: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    border: none;
+    height: 36px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .Container {
+        margin: 80px 30px 60px;
+    }
+
+    .ButtonMore {
+        margin: 0 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Container {
+        margin: 50px 10px;
+    }
+
+    .ButtonMore {
+        margin: 0 10px;
+    }
+}

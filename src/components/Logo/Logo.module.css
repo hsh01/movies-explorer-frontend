@@ -1,0 +1,11 @@
+.Logo {
+    background-image: url('../../images/logo.svg');
+    width: 38px;
+    height: 38px;
+}
+
+.Logo__Link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

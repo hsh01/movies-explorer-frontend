@@ -19,7 +19,6 @@
 }
 
 .Title {
-    font-weight: 400;
     font-size: 50px;
     line-height: 1.16;
     letter-spacing: -0.04em;
@@ -36,7 +35,6 @@
 }
 
 .Text {
-    font-weight: 400;
     font-size: 14px;
     line-height: 1.57;
     width: 600px;
@@ -57,7 +55,6 @@
 
 .Portfolio__Header {
     font-style: normal;
-    font-weight: 400;
     font-size: 18px;
     line-height: 1.11;
     color: #A0A0A0;
@@ -85,7 +82,6 @@
 }
 
 .Link__Text {
-    font-weight: 400;
     font-size: 30px;
     line-height: 1.67;
     letter-spacing: -0.04em;
@@ -105,6 +101,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .Container {
+        display: grid;
+    }
+
     .Title {
         font-size: 40px;
         line-height: 1;

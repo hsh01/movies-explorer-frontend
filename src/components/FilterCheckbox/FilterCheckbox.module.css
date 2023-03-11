@@ -1,0 +1,67 @@
+.Container {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+}
+
+.Checkbox {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    left: 0;
+    bottom: 0;
+}
+
+.Checkbox_Item {
+    width: 36px;
+    height: 20px;
+    display: block;
+    position: relative;
+    border-radius: 20px;
+    margin: 0 8px 0 0;
+    background: #EBEBEB;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.Checkbox:checked + .Checkbox_Item {
+    background: #2BE080;
+    border-radius: 20px;
+}
+
+.Checkbox_Item:before {
+    content: '';
+    height: 16px;
+    width: 16px;
+    background: #F5F5F5;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    left: 2px;
+    top: 2px;
+    position: absolute;
+}
+
+.Checkbox:checked + .Checkbox_Item::before {
+    content: '';
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 2px;
+    left: 18px;
+    position: absolute;
+}
+
+.Checkbox_Item:checked:before {
+    content: '';
+    position: absolute;
+    left: -2em;
+    top: 0;
+}
+
+.Checkbox__Text {
+    font-size: 13px;
+    line-height: 18px;
+}

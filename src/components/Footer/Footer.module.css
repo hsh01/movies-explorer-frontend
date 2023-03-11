@@ -4,7 +4,6 @@
 }
 
 .Text {
-    font-weight: 400;
     font-size: 13px;
     line-height: 16px;
     text-align: center;
@@ -34,6 +33,10 @@
 
 .Link:hover {
     text-decoration: underline;
+}
+
+.Copyright__Text {
+    margin: 0 0 20px;
 }
 
 @media screen and (max-width: 768px) {

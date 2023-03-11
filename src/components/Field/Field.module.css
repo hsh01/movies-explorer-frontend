@@ -1,0 +1,32 @@
+.Field {
+
+}
+
+.Label {
+    font-size: 10px;
+    line-height: 12px;
+    color: #A0A0A0;
+}
+
+.Input {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    padding: 15px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.Input_Type_Error {
+    color: #FF3055;
+}
+
+.Error {
+    font-size: 10px;
+    line-height: 12px;
+    color: #FF3055;
+    margin-top: 10px;
+}

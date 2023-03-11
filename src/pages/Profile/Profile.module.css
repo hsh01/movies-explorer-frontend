@@ -1,0 +1,74 @@
+.Container {
+    max-width: 410px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0 0 120px;
+    padding: 74px 0 0;
+    text-align: center;
+}
+
+.Fields {
+    margin-bottom: 210px;
+}
+
+.Field {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: solid 1px #E8E8E8;
+}
+
+.Field:last-child {
+    border-bottom: none;
+}
+
+.Label {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.Text {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: center;
+}
+
+.Button {
+    font-size: 13px;
+    line-height: 16px;
+    cursor: pointer;
+}
+
+.Button_Type_Primary {
+    font-weight: 500;
+    color: #FF004D;
+}
+
+
+@media screen and (max-width: 768px) {
+    .Container {
+        margin-bottom: 96px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .Container {
+        max-width: calc(100vw - 20px);
+        margin: 0 auto;
+    }
+}

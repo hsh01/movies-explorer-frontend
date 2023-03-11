@@ -1,5 +1,4 @@
 .Title {
-    font-weight: 400;
     font-size: 50px;
     line-height: 1.16;
     letter-spacing: -0.04em;
@@ -10,7 +9,6 @@
 
 .Text {
     margin: 0;
-    font-weight: 400;
     font-size: 14px;
     line-height: 1.43;
     text-align: center;
@@ -39,6 +37,13 @@
     .Snippet {
         width: 84px;
         height: 57px;
+    }
+
+    .Snippets {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        width: 90%;
+        justify-items: center;
     }
 }
 

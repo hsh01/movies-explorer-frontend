@@ -1,0 +1,72 @@
+.Container {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.Title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 40px 0;
+}
+
+.Form {
+
+}
+
+.Fields {
+    margin-bottom: 180px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: center;
+}
+
+.Button {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    background-color: #3456F3;
+    border-radius: 3px;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Hint {
+    display: flex;
+    line-height: 17px;
+    column-gap: 6px;
+}
+
+.Hint__Text {
+    color: #A0A0A0;
+}
+
+.Hint__Link {
+    color: #3456F3;
+    text-decoration: none;
+}
+
+.Hint__Link:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 320px) {
+    .Container {
+        margin: 0 30px;
+    }
+}
