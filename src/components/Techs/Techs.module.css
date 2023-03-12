@@ -24,7 +24,7 @@
 }
 
 .Snippet {
-    background-color: #E8E8E8;
+    background-color: var(--bg-color-snipet-secondary);
     border-radius: 10px;
     width: 90px;
     height: 60px;
@@ -39,11 +39,20 @@
         height: 57px;
     }
 
+    .Title {
+        padding-top: 80px;
+        margin: 0 0 22px;
+    }
+
+    .Text {
+        margin-bottom: 83px;
+    }
+
     .Snippets {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-        width: 90%;
+        grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
         justify-items: center;
+        margin: 0;
     }
 }
 

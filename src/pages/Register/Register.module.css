@@ -1,6 +1,7 @@
 .Container {
     max-width: 400px;
     margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -36,8 +37,8 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #FFFFFF;
-    background-color: #3456F3;
+    color: var(--color);
+    background-color: var(--bg-color-button-hint);
     border-radius: 3px;
     border: none;
     padding: 15px;
@@ -52,11 +53,11 @@
 }
 
 .Hint__Text {
-    color: #A0A0A0;
+    color: var(--color-snipet-caption);
 }
 
 .Hint__Link {
-    color: #3456F3;
+    color: var(--bg-color-button-hint);
     text-decoration: none;
 }
 

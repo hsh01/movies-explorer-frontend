@@ -13,5 +13,6 @@ export enum Locales {
     REGISTER = 'Зарегистрироваться',
     PAGE_NOT_FOUND = 'Страница не найдена',
     BACK = 'Назад',
+    LIKE = 'Сохранить',
 
 }

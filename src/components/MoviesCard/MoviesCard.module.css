@@ -3,14 +3,21 @@
     justify-content: space-between;
     align-items: start;
     align-content: space-between;
-    gap: 14px;
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: 1fr 24px;
+    gap: 18px;
+    grid-template-areas:
+            'title title duration'
+            'image image image'
+            'button button button';
+    background: #222222;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 18px 0;
 }
 
 .Thumbnail {
     grid-column: 1 / -1;
     width: 100%;
+    grid-area: image;
 }
 
 .Name {
@@ -19,31 +26,38 @@
     font-size: 13px;
     line-height: 16px;
     overflow-wrap: break-word;
+    grid-area: title;
+    padding-left: 18px;
 }
 
 .Button {
-    background: #F5F5F5 url("../../images/unliked.svg") no-repeat center;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    background: var(--bg-color-button) no-repeat center;
+    color: var(--color);
+    border-radius: 30px;
+    width: 100px;
+    height: 29px;
     cursor: pointer;
     border: none;
+    grid-area: button;
+    justify-self: center;
 }
 
 .Button_Type_Liked {
-    background: #F5F5F5 url("../../images/liked.svg") no-repeat center;
+    background: var(--bg-color-pink) url("../../images/liked.svg") no-repeat center;
 }
 
 .Button_Type_Remove {
-    background: #F5F5F5 url("../../images/remove.svg") no-repeat center;
+    background-image: url("../../images/remove.svg");
 }
 
 .Duration {
     grid-column: 1 / -1;
-    color: #A0A0A0;
+    color: var(--color-snipet-caption);
     font-size: 11px;
     line-height: 13px;
-    border-top: solid 1px #E8E8E8;
-    align-self: self-end;
     padding-top: 6px;
+    grid-area: duration;
+    align-self: self-start;
+    justify-self: right;
+    padding-right: 18px;
 }

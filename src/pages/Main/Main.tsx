@@ -28,7 +28,6 @@ const Main: React.FC = () => {
         <div className={styles.Container}>
             <Header theme='dark'/>
             <Promo/>
-            <NavTab links={navTabLinks}/>
             <AboutProject/>
             <Techs/>
             <AboutMe/>

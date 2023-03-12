@@ -14,7 +14,19 @@ body {
     -moz-osx-font-smoothing: grayscale;
     --primary-color: #073042;
     --secondary-color: #2BE080;
-    --primary-bg-color: #FFF;
-    --secondary-bg-color: #F5F5F5;
-    --color: #000;
+    --bg-color-primary: #202020;
+    --bg-color-secondary: #272727;
+    --bg-color-pink: #EE3465;
+    --bg-color-button: #313131;
+    --bg-color-button-secondary: #2F2F2F;
+    --bg-color-button-hint: #4285F4;
+    --bg-color-snipet-secondary: #303030;
+    --color-snipet-caption: #8B8B8B;
+    --color: #FFF;
+    --color-secondary: #000;
+    --line-color-primary: #DADADA;
+    --line-color-secondary: #424242;
+    --line-color-accent: #AAAAAA20;
+    color: var(--color);
+    background-color: var(--bg-color-primary);
 }

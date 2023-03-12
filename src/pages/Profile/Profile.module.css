@@ -1,9 +1,12 @@
 .Container {
     max-width: 410px;
     margin: 0 auto;
+    padding: 0 calc(calc(100% - 410px) / 2) 70px;
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--bg-color-primary);
 }
 
 .Title {
@@ -23,7 +26,7 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 0;
-    border-bottom: solid 1px #E8E8E8;
+    border-bottom: solid 1px var(--line-color-secondary);
 }
 
 .Field:last-child {

@@ -5,6 +5,7 @@
     height: 74px;
     padding: 0 70px;
     margin: 0;
+    background-color: var(--bg-color-primary);
 }
 
 .Container_Theme_Dark {
@@ -17,15 +18,15 @@
     align-items: center;
 }
 
-.ProfileWrapper {
-    display: flex;
-    column-gap: 50px;
-    align-items: center;
-}
-
 .Menu_Type_Main {
     display: flex;
-    column-gap: 20px;
+    column-gap: 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    justify-content: center;
+    width: fit-content;
 }
 
 .Menu_Button {
@@ -47,32 +48,32 @@
 
 .Button__Primary {
     background-color: var(--secondary-color);
-    color: var(--color);
     padding: 8px 20px;
 }
 
 .Button__Secondary {
     background-color: transparent;
-    color: var(--primary-bg-color);
+    color: var(--color);
 }
 
-.Button__Profile {
+.Button_Type_Profile {
     background-color: transparent;
     color: var(--color);
     display: flex;
+    column-gap: 7px;
+    padding: 0 7px;
+    border: 2px solid var(--line-color-accent);
+    border-radius: 50px;
     align-items: center;
-    column-gap: 17px;
 }
 
 .ProfileIcon {
-    background-image: url(../../images/profile.svg);
-    background-color: var(--secondary-bg-color);
-    background-repeat: no-repeat;
-    background-position: center;
+    background: var(--bg-color-primary) url(../../images/profile.svg) no-repeat center;
     border-radius: 4px;
-    padding: 8px;
     width: 12px;
     height: 14px;
+    padding: 0;
+    margin: 5px 0;
 }
 
 .Button__MenuItem {
@@ -94,45 +95,42 @@
         padding: 0 30px;
     }
 
-    .Buttons {
-        visibility: hidden;
-    }
-
     .Menu_Button {
-        background: #FFF url('../../images/menu.svg');
+        background: var(--bg-color-primary) url('../../images/menu.svg') no-repeat center;
         content: '';
         height: 44px;
         width: 44px;
-        visibility: visible;
         display: block;
         border: none;
     }
 
     .Menu_Button_Open {
-        background: #FFF url('../../images/close.svg') no-repeat center;
+        background: var(--bg-color-primary) url('../../images/close.svg') no-repeat center;
         z-index: 2;
     }
+
     .Menu {
         display: none;
         flex-direction: column;
         justify-content: space-between;
         width: 66vw;
-        height: calc(100vh - 150px);
-        background-color: #fff;
+        background-color: var(--bg-color-primary);
         z-index: 1;
         position: fixed;
         right: 0;
         top: 0;
-        padding: 100px 0 50px;
+        padding: 159px 0 90px;
+        height: 100%;
+        box-sizing: border-box;
     }
 
     .Menu_Open {
         display: flex;
-        visibility: visible;
+        position: fixed;
     }
 
     .Menu:before {
-        background: #FFF url('../../images/close.svg') no-repeat center;
+        background: var(--bg-color-primary) url('../../images/close.svg') no-repeat center;
         z-index: 2;
         content: '';
         height: 32px;
@@ -159,6 +157,7 @@
         row-gap: 10px;
         column-gap: 50px;
         align-items: center;
+        position: initial;
     }
 
     .Button__MenuItem {
@@ -170,21 +169,6 @@
     .Button__MenuItem_Active {
         text-underline-offset: 10px;
         text-decoration: underline;
-    }
-
-    .Button__Profile {
-        flex-direction: row-reverse;
-        column-gap: 7px;
-        padding: 0 7px;
-        border: 1px solid #AAA;
-        border-radius: 50px;
-        align-items: center;
-    }
-
-    .ProfileIcon {
-        background-color: #fff;
-        padding: 0;
-        margin: 5px 0;
     }
 
     .Buttons > .Button__Primary, .Buttons > .Button__Secondary {
@@ -204,11 +188,12 @@
 
     .Menu {
         display: none;
+        padding: 144px 0 46px;
     }
 
     .Menu_Open {
         display: flex;
-        width: 100vw;
+        width: 100%;
     }
 
     .Menu_Open::after {

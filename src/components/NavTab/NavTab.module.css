@@ -1,7 +1,7 @@
 .Container {
     height: 66px;
     background-color: var(--color);
-    color: var(--primary-bg-color);
+    color: var(--bg-color-primary);
 }
 
 .Menu {

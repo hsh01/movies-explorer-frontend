@@ -81,14 +81,12 @@ const Header: React.FC<HeaderProps> = ({user, theme}) => {
                                         ))
                                     }
                                 </div>
-                                <div className={styles.ProfileWrapper}>
-                                    <NavLink className={`${styles.Button} ${styles.Button__Profile}`}
-                                             to={ProtectedRouter.PROFILE}
-                                    >
-                                        <span>Аккаунт</span>
-                                        <span className={styles.ProfileIcon} />
-                                    </NavLink>
-                                </div>
+                                <Link className={`${styles.Button} ${styles.Button_Type_Profile}`}
+                                      to={ProtectedRouter.PROFILE}
+                                >
+                                    <span className={styles.ProfileIcon} />
+                                    <span>Аккаунт</span>
+                                </Link>
                             </div>
                             <button type='button'
                                     className={styles.Menu_Button}

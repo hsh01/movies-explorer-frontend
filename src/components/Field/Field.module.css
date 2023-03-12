@@ -5,19 +5,26 @@
 .Label {
     font-size: 10px;
     line-height: 12px;
-    color: #A0A0A0;
+    color: var(--color-snipet-caption);
 }
 
 .Input {
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;
-    background-color: #F9F9F9;
-    border-radius: 8px;
+    background-color: var(--bg-color-primary);
+    color: var(--color);
     padding: 15px;
     border: none;
+    border-bottom: solid 1px var(--line-color-secondary);
     width: 100%;
     box-sizing: border-box;
+}
+
+.Input:focus {
+    outline: none;
+    border: none;
+    border-bottom: solid 1px var(--bg-color-button-hint);
 }
 
 .Input_Type_Error {

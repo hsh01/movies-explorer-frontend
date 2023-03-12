@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from './MoviesCard.module.css';
 import { minutesToString } from "../../utils/helpers";
 import { MovieListType, MoviesCardProps } from "../../models/movies";
+import { Locales } from "../../utils/locales";
 
 const MoviesCard: React.FC<MoviesCardProps> = ({
                                                    card: {nameRU, thumbnail, duration, liked},
@@ -11,17 +12,18 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
 
     return (
         <div className={styles.Container}>
+            <h1 className={styles.Name}>{nameRU}</h1>
+            <div className={styles.Duration}>{minutesToString(duration)}</div>
             <img className={styles.Thumbnail}
                  src={thumbnail}
                  alt={nameRU}
                  aria-label={nameRU}
             />
-            <h1 className={styles.Name}>{nameRU}</h1>
             {
                 movieListType === MovieListType.ALL &&
                 <button className={`${styles.Button} ${isLiked ? styles.Button_Type_Liked : ''}`}
                         onClick={() => setIsLiked(!isLiked)}
-                />
+                >{!isLiked ? Locales.LIKE : ''}</button>
             }
             {
                 movieListType === MovieListType.SAVED &&
@@ -29,7 +31,6 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
                         onClick={() => setIsLiked(!isLiked)}
                 />
             }
-            <div className={styles.Duration}>{minutesToString(duration)}</div>
         </div>
     );
 };

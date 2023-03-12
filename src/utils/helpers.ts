@@ -1,5 +1,9 @@
-export const zeroPad = (num: number, places: number) => String(num).padStart(places, '0')
-
 export function minutesToString(minutes: number) {
-    return `${Math.floor(minutes / 60)}ч ${zeroPad(minutes % 60, 2)}м`
+    let minutesLabel = 'минут';
+    if (minutes % 10 >= 2 && minutes % 10 <= 4) {
+        minutesLabel = 'минуты'
+    } else if (minutes % 10 === 1) {
+        minutesLabel = 'минута'
+    }
+    return `${minutes} ${minutesLabel}`;
 }

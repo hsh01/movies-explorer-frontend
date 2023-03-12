@@ -27,6 +27,7 @@
 .Snippets {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    justify-content: center
 }
 
 .Snippet {
@@ -46,20 +47,29 @@
 
 .Timing__Primary {
     background-color: var(--secondary-color);
+    color: var(--color-secondary);
 }
 
 .Timing__Secondary {
-    background-color: #F2F2F2;
+    background-color: var(--bg-color-snipet-secondary);
 }
 
 .Caption {
-    color: #A0A0A0;
+    color: var(--color-snipet-caption);
     font-size: 14px;
     line-height: 1.21;
 }
 
 
+@media screen and (max-width: 768px) {
+    .Snippets {
+        grid-template-columns: minmax(70px, 228fr) 912fr;
+    }
+}
+
+
 @media screen and (max-width: 320px) {
+
     .Cards {
         flex-direction: column;
         row-gap: 56px;
@@ -82,7 +92,7 @@
     }
 
     .Snippets {
-        grid-template-columns: 100px 184px;
+        grid-template-columns: 100px 1fr;
     }
 
     .Snippet {
