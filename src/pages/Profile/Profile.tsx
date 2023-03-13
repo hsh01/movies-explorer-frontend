@@ -15,7 +15,7 @@ const Profile: React.FC = () => {
     return (
         <>
             <Header user={user} />
-            <div className={styles.Container}>
+            <main className={styles.Container}>
                 <h1 className={styles.Title}>{Locales.HELLO}, {user.name}!</h1>
                 <div className={styles.Fields}>
                     <div className={styles.Field}>
@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
                     <div className={styles.Button}>{Locales.EDIT}</div>
                     <div className={`${styles.Button} ${styles.Button_Type_Primary}`}>{Locales.LOGOUT}</div>
                 </div>
-            </div>
+            </main>
         </>
     );
 };

@@ -11,7 +11,7 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
     const [isLiked, setIsLiked] = useState<boolean>(liked ?? false);
 
     return (
-        <div className={styles.Container}>
+        <li className={styles.Container}>
             <h1 className={styles.Name}>{nameRU}</h1>
             <div className={styles.Duration}>{minutesToString(duration)}</div>
             <img className={styles.Thumbnail}
@@ -31,7 +31,7 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
                         onClick={() => setIsLiked(!isLiked)}
                 />
             }
-        </div>
+        </li>
     );
 };
 

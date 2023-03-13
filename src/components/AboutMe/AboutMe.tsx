@@ -2,23 +2,9 @@ import React from "react";
 import styles from './AboutMe.module.css';
 import { Section } from "../Section";
 import { Link } from "react-router-dom";
+import { links } from "../../utils/constants";
 
 const AboutMe: React.FC = () => {
-    const links = [
-        {
-            label: 'Статичный сайт',
-            href: '#'
-        },
-        {
-            label: 'Адаптивный сайт',
-            href: '#'
-        },
-        {
-            label: 'Одностраничное приложение',
-            href: '#'
-        },
-    ];
-
     return (
         <Section header='Студент' name='about-me'>
             <div className={styles.Container}>
@@ -40,8 +26,13 @@ const AboutMe: React.FC = () => {
                 <ul className={styles.Links}>{
                     links.map((item, index) => (
                         <li className={styles.Link} key={index}>
-                            <p className={styles.Link__Text}>{item.label}</p>
-                            <Link className={styles.Link__Button} to={item.href} />
+                            <Link className={styles.Link__Text}
+                                  to={item.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer">
+                                {item.label}
+                                <span className={styles.Link__Button} />
+                            </Link>
                         </li>
                     ))
                 }</ul>

@@ -10,12 +10,12 @@ import { MovieListType, MoviesListProps } from "../../models/movies";
 const Movies: React.FC<MoviesListProps> = ({movieListType = MovieListType.ALL}) => {
 
     return (
-        <div className={styles.Container}>
+        <main className={styles.Container}>
             <Header user={'fake-user'}/>
             <SearchForm/>
             <MoviesCardList movieListType={movieListType}/>
             <Footer/>
-        </div>
+        </main>
     );
 };
 

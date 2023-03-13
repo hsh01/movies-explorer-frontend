@@ -48,6 +48,7 @@
 
 .Button__Primary {
     background-color: var(--secondary-color);
+    color: var(--color-secondary);
     padding: 8px 20px;
 }
 
@@ -177,6 +178,17 @@
 
 }
 
+@media screen and (max-width: 640px) {
+    .Menu {
+        width: 100%;
+    }
+
+    .Menu_Open::after {
+        width: 0;
+        height: 0;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .Container {
         padding: 0 14px;
@@ -194,11 +206,6 @@
     .Menu_Open {
         display: flex;
         width: 100%;
-    }
-
-    .Menu_Open::after {
-        width: 0;
-        height: 0;
     }
 
     .Menu_Type_Main {

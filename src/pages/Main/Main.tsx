@@ -25,14 +25,14 @@ const Main: React.FC = () => {
     ]
 
     return (
-        <div className={styles.Container}>
+        <main className={styles.Container}>
             <Header theme='dark'/>
             <Promo/>
             <AboutProject/>
             <Techs/>
             <AboutMe/>
             <Footer/>
-        </div>
+        </main>
     );
 };
 

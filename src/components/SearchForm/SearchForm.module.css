@@ -36,7 +36,7 @@
 
 
 .Search__Field:focus {
-    outline: solid 1px var(--color);
+    outline: solid 1px var(--bg-color-button-hint);
 }
 
 .Search__Button {
@@ -50,6 +50,14 @@
     width: 34px;
     height: 34px;
     cursor: pointer;
+}
+
+.Error {
+    font-size: 14px;
+    color: red;
+    margin-left: 20px;
+    position: relative;
+    top: 10px;
 }
 
 @media screen and (max-width: 768px) {

@@ -12,6 +12,7 @@
 
 .Title {
     font-size: 50px;
+    font-weight: 400;
     line-height: 1.16;
     letter-spacing: -0.04em;
     margin: 0;
@@ -87,14 +88,19 @@
     line-height: 1.67;
     letter-spacing: -0.04em;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--color);
+    text-decoration: none;
 }
 
 .Link__Button {
-    background-image: url('../../images/external-link.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url('../../images/external-link.svg') no-repeat center;
     width: 29px;
     height: 60px;
+    display: block;
 }
 
 @media screen and (max-width: 768px) {

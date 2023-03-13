@@ -18,12 +18,12 @@
 
 @media screen and (max-width: 768px) {
     .Container {
-        padding: 0 44px 70px;
+        padding: 0 0 70px;
         background-size: 680px;
     }
 
     .Header {
-        padding: 300px 44px 370px;
+        padding: 300px 5.7% 370px;
         text-align: center;
     }
 }

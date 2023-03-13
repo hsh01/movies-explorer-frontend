@@ -8,7 +8,7 @@ import { PublicRouter } from "../../utils/routes";
 
 const Register: React.FC = () => {
     return (
-        <div className={styles.Container}>
+        <main className={styles.Container}>
             <Logo />
             <h1 className={styles.Title}>{Locales.WELLCOME}</h1>
             <form className={styles.Form}>
@@ -25,7 +25,7 @@ const Register: React.FC = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </main>
     );
 };
 

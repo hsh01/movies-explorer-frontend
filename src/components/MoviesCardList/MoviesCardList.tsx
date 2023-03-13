@@ -50,13 +50,13 @@ const MoviesCardList: React.FC<MoviesListProps> = ({movieListType = MovieListTyp
 
     return (
         <div className={styles.MoviesCardList}>
-            <div className={styles.Container}>
+            <ul className={styles.Container}>
                 {
                     movies ? movies.map((movie, index) => (
                         <MoviesCard key={movie.id} card={movie} movieListType={movieListType} />
                     )) : <Preloader />
                 }
-            </div>
+            </ul>
             <button className={styles.ButtonMore}>Ещё</button>
         </div>
     );

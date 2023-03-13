@@ -10,7 +10,7 @@
     grid-template-columns: repeat(auto-fit, minmax(251px, 1fr));
     grid-gap: 38px 20px;
     margin: 0 70px 70px;
-    padding-top: 70px;
+    padding: 70px 0 0;
     border-top: solid 1px var(--line-color-accent);
     justify-items: stretch;
 }

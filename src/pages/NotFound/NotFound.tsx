@@ -7,11 +7,11 @@ const NotFound: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div className={styles.Container}>
+        <main className={styles.Container}>
             <h1 className={styles.Title}>404</h1>
             <p className={styles.Text}>{Locales.PAGE_NOT_FOUND}</p>
             <button className={styles.Button} onClick={() => navigate(-1)}>{Locales.BACK}</button>
-        </div>
+        </main>
     );
 };
 
