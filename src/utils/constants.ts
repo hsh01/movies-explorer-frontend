@@ -1,14 +1,14 @@
 export const links = [
     {
         label: 'Статичный сайт',
-        href: 'https://github.com/hsh01/how-to-learn'
+        href: 'https://hsh01.github.io/how-to-learn/'
     },
     {
         label: 'Адаптивный сайт',
-        href: 'https://github.com/hsh01/russian-travel'
+        href: 'https://hsh01.github.io/russian-travel/'
     },
     {
         label: 'Одностраничное приложение',
-        href: 'https://github.com/hsh01/react-mesto-api-full'
+        href: 'https://hsh01.github.io/react-mesto-auth/'
     },
 ];

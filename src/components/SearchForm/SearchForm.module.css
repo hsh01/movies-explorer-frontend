@@ -24,7 +24,7 @@
     border: none;
     box-shadow: none;
     color: var(--color);
-    padding: 0;
+    padding: 0 50px 0 0;
     text-indent: 22px;
     border-radius: 50px;
     width: 100%;
@@ -34,9 +34,12 @@
     background-color: var(--bg-color-primary);
 }
 
-
 .Search__Field:focus {
     outline: solid 1px var(--bg-color-button-hint);
+}
+
+.Search__Field:invalid {
+  border-color: red;
 }
 
 .Search__Button {
@@ -50,6 +53,10 @@
     width: 34px;
     height: 34px;
     cursor: pointer;
+}
+
+.Search__Button:disabled {
+    opacity: .2;
 }
 
 .Error {

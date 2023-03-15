@@ -14,5 +14,6 @@ export enum Locales {
     PAGE_NOT_FOUND = 'Страница не найдена',
     BACK = 'Назад',
     LIKE = 'Сохранить',
+    MOVIE = 'Фильм',
 
 }

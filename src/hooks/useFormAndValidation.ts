@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 
 export function useFormAndValidation() {
     const [values, setValues] = useState<any>({});
@@ -6,7 +6,11 @@ export function useFormAndValidation() {
     const [isValid, setIsValid] = useState(true);
 
     const handleChange = (e: any) => {
-        const {name, value} = e.target;
+        const {name} = e.target;
+        let value = e.target.value;
+        if (e.target.type === 'checkbox') {
+            value = e.target.checked;
+        }
         setValues({...values, [name]: value});
         setErrors({...errors, [name]: e.target.validationMessage});
         setIsValid(e.target.closest('form').checkValidity());

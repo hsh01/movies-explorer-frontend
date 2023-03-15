@@ -6,7 +6,6 @@
     flex-direction: column;
     height: 100vh;
     justify-content: center;
-    align-items: center;
 }
 
 .Title {
@@ -69,5 +68,6 @@
 @media screen and (max-width: 320px) {
     .Container {
         margin: 0 30px;
+        align-items: center;
     }
 }
