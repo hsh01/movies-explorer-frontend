@@ -15,8 +15,8 @@
     margin: 40px 0;
 }
 
-.Form {
-
+.Error {
+    color: var(--bg-color-pink);
 }
 
 .Fields {
@@ -44,6 +44,10 @@
     padding: 15px;
     width: 100%;
     cursor: pointer;
+}
+
+.Button:disabled {
+    opacity: .5;
 }
 
 .Hint {

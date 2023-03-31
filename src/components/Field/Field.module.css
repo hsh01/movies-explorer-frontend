@@ -1,11 +1,22 @@
 .Field {
-
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .Label {
     font-size: 10px;
     line-height: 12px;
     color: var(--color-snipet-caption);
+}
+
+.Label_View_Inline {
+    color: var(--color);
+    position: absolute;
+    top: 15px;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
 }
 
 .Input {
@@ -21,6 +32,13 @@
     box-sizing: border-box;
 }
 
+.Input_View_Inline {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 15px 0 15px 15px;
+    text-align: right;
+}
+
 .Input:focus {
     outline: none;
     border: none;
@@ -28,12 +46,12 @@
 }
 
 .Input_Type_Error {
-    color: #FF3055;
+    color: var(--bg-color-pink);
 }
 
 .Error {
     font-size: 10px;
     line-height: 12px;
-    color: #FF3055;
+    color: var(--bg-color-pink);
     margin-top: 10px;
 }

@@ -1,3 +1,5 @@
+import { MoviesCount, MoviesSearchParamsEnum } from "../models/movies";
+
 export function minutesToString(minutes: number) {
     let minutesLabel = 'минут';
     if (minutes % 10 >= 2 && minutes % 10 <= 4) {
@@ -6,4 +8,25 @@ export function minutesToString(minutes: number) {
         minutesLabel = 'минута'
     }
     return `${minutes} ${minutesLabel}`;
+}
+
+export function clean(target: string) {
+    return target.toLowerCase()
+        .replace(/[^a-zA-ZА-ЯЁёа-я0-9 ]/g, '')
+        .trim()
+        .replace(/\s+/, ' ');
+}
+
+export function clean_words(target: string) {
+    if (target) {
+        return clean(target).split(' ');
+    }
+    return []
+}
+export function getEmbedLink(link?: string) {
+    if (link) {
+        const url = new URL(link);
+        const urlParams = new URLSearchParams(url.search);
+        return `https://www.youtube.com/embed/${urlParams.get('v')}?mute=1`;
+    }
 }

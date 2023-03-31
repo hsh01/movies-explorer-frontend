@@ -34,6 +34,12 @@
     background-color: var(--bg-color-primary);
 }
 
+.Search__Field::-webkit-search-cancel-button {
+    height: 20px;
+    -webkit-appearance: none;
+    width: 20px;
+}
+
 .Search__Field:focus {
     outline: solid 1px var(--bg-color-button-hint);
 }
@@ -53,6 +59,25 @@
     width: 34px;
     height: 34px;
     cursor: pointer;
+}
+
+.Search__Reset {
+    position: absolute;
+    top: 7px;
+    right: 45px;
+    background: url(../../images/remove.svg) no-repeat center;
+    background-position-x: 15px;
+    border: 0;
+    border-radius: 50px;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.Search__Field:focus ~ .Search__Reset {
+    opacity: .6;
+    transition: ease-in .2s;
 }
 
 .Search__Button:disabled {
