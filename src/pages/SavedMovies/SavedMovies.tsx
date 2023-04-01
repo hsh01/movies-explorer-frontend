@@ -11,6 +11,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { api } from "../../utils/api/MainApi";
 import { clean_words } from "../../utils/helpers";
 import { useSearchParamsState } from "../../hooks/useSearchParamsState";
+import { ErrorMessagesEnum } from "../../utils/constants";
 
 
 const SavedMovies: React.FC = () => {
@@ -33,7 +34,11 @@ const SavedMovies: React.FC = () => {
 
         fetchSavedMovies()
             .catch(err => {
-                setError(err.toString());
+                let message = err.toString();
+                if (message === 'TypeError: Failed to fetch') {
+                    message = ErrorMessagesEnum.NO_CONNECTION;
+                }
+                setError(message);
             })
             .finally(() => setLoading(false));
     }, []);
@@ -67,7 +72,10 @@ const SavedMovies: React.FC = () => {
             <main className={styles.Main}>
                 <SearchForm validator={validator} setSearch={setSearch} isShort={isShortsOnly}
                             setIsShortsOnly={setIsShortsOnly} />
-                <div className={styles.Error}>{error}</div>
+                {
+                    error &&
+                    <div className={`${styles.InfoTip} ${styles.Error}`}>{error}</div>
+                }
                 <MoviesCardList saved={true} loading={loading} movies={displayedMovies} handleLike={handleLike} />
             </main>
             <Footer />
