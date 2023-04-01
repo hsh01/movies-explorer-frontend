@@ -75,7 +75,7 @@
     opacity: 0;
 }
 
-.Search__Field:focus ~ .Search__Reset {
+.Search__Field:focus ~ .Search__Reset, .Search__Field:hover ~ .Search__Reset, .Search__Reset:hover {
     opacity: .6;
     transition: ease-in .2s;
 }

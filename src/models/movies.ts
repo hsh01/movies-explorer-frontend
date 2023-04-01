@@ -11,17 +11,9 @@ export type CardModel = {
     year: string;
     description: string;
     image: string;
-    liked?: boolean;
 }
 
 
 export enum MoviesSearchParamsEnum {
     SEARCH_STRING = 'q',
 }
-
-export type MoviesCount = {
-    more: number;
-    available: number;
-    current?: number;
-    limit: number;
-};
