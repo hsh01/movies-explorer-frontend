@@ -2,7 +2,7 @@
   "name": "movies-explorer-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/hsh01/movies-explorer-frontend",
+  "homepage": "https://hsh01.github.com/movies-explorer-frontend",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
