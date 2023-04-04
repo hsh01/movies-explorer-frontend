@@ -4,6 +4,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { UserCredentialsModel, UserModel } from "../models/UserModel";
 import { api } from "../utils/api/MainApi";
 import { ProtectedRouter, PublicRouter } from "../utils/routes";
+import { LocalStorageEnum } from "../utils/constants";
 
 
 interface AuthContextInterface {
@@ -17,7 +18,7 @@ export const AuthContext = React.createContext<AuthContextInterface>(null!);
 
 export const AuthProvider = ({children}: { children: React.ReactNode }) => {
     const navigate = useNavigate();
-    const [user, setUser] = useLocalStorage<UserModel | null>("user", null);
+    const [user, setUser] = useLocalStorage<UserModel | null>(LocalStorageEnum.USER, null);
     const location = useLocation();
 
     function checkAuth() {
@@ -25,14 +26,15 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
             .then((res) => {
                 if (res) {
                     setUser(res);
-                    if (location?.pathname === PublicRouter.SIGNUP) {
-                        const from = location?.pathname ? location?.pathname : ProtectedRouter.MOVIES;
+                    if (Object.values(ProtectedRouter).map(item=>item.toString()).includes(location?.pathname)) {
+                        const from = location?.pathname ? location?.pathname : PublicRouter.MAIN;
                         navigate(from, {replace: true});
                     }
                 }
             })
             .catch((err) => {
                 console.log(err);
+                logout();
             });
     }
 
@@ -48,14 +50,19 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
                 if (res.success) {
                     checkAuth();
                 }
+            }).then(() => {
+                navigate(PublicRouter.MAIN);
             });
     };
 
     const logout = () => {
         api.logout()
-            .finally(() => {
+            .then(() => {
+                Object.values(LocalStorageEnum).forEach((item) => localStorage.removeItem(item));
                 setUser(null);
-                navigate(PublicRouter.SIGNIN);
+            })
+            .finally(() => {
+                navigate(PublicRouter.MAIN);
             });
     };
 

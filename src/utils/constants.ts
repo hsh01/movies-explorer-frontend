@@ -18,3 +18,29 @@ export enum ErrorMessagesEnum {
     NOTHING_FOUND = 'Ничего не найдено',
     KEYWORDS_REQUIRED = 'Нужно ввести ключевое слово',
 }
+
+export enum LocalStorageEnum {
+    IS_SHORTS_ONLY = 'isShortsOnly',
+    LAST_SEARCH = 'lastSearch',
+    ALL_MOVIES = 'allMovies',
+    DISPLAYED_MOVIES = 'movies',
+    USER = 'user',
+}
+
+export enum MoviesCountMoreEnum {
+    DEFAULT = 3,
+    TABLET = 3,
+    MOBILE = 3,
+}
+export enum MoviesCountLimitEnum {
+    DEFAULT = 12,
+    TABLET = 8,
+    MOBILE = 5,
+}
+export enum WindowWidthEnum {
+    DEFAULT = 1080,
+    TABLET = 480,
+    MOBILE = 320,
+}
+
+export const isEmailRegex = '\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,5})+';

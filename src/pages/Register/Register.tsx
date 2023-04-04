@@ -3,18 +3,19 @@ import styles from './Register.module.css';
 import { Logo } from "../../components/Logo";
 import { Field } from "../../components/Field";
 import { Locales } from "../../utils/locales";
-import { Link } from "react-router-dom";
-import { PublicRouter } from "../../utils/routes";
+import { Link, useNavigate } from "react-router-dom";
+import { ProtectedRouter, PublicRouter } from "../../utils/routes";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { api } from "../../utils/api/MainApi";
 import { ApiError } from "../../models/ApiError";
+import { isEmailRegex } from "../../utils/constants";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Register: React.FC = () => {
 
     const initialValues = useMemo(() => {
         return {email: '', password: '', name: ''};
     }, []);
-    const [registered, setRegistered] = useState<boolean>(false);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const {
         values,
@@ -26,6 +27,8 @@ const Register: React.FC = () => {
         resetForm
     } = useFormAndValidation(initialValues);
 
+    const {login} = useAuth();
+    const navigate = useNavigate();
     useEffect(() => {
         resetForm(initialValues);
     }, [resetForm, initialValues]);
@@ -39,12 +42,14 @@ const Register: React.FC = () => {
         setIsSubmitting(true);
         api.register(values)
             .then((data) => {
-                if (data) {
-                    setRegistered(true);
-                } else {
+                if (!data) {
                     return Promise.reject(data);
                 }
             })
+            .then(() => {
+                login({email: values.email, password: values.password})
+            })
+            .then(() => navigate(ProtectedRouter.MOVIES))
             .catch((err: ApiError) => {
                 setErrors({form: err.body ?? err.toString()});
                 console.log(err.body);
@@ -76,6 +81,7 @@ const Register: React.FC = () => {
                            onBlur={handleBlur}
                            error={errors.email}
                            value={values.email}
+                           pattern={isEmailRegex}
                     />
                     <Field label={Locales.PASSWORD}
                            type='password'
@@ -87,17 +93,13 @@ const Register: React.FC = () => {
                     />
                 </div>
                 {
-                    registered &&
-                    <p>Вы успешно зарегистрировались!</p>
-                }
-                {
                     errors.form &&
                     <div className={styles.Error}>{errors.form}</div>
                 }
                 <div className={styles.Buttons}>
                     <button type='submit'
                             className={styles.Button}
-                            disabled={!isValid || isSubmitting || registered}
+                            disabled={!isValid || isSubmitting}
                     >{Locales.REGISTER}</button>
                     <div className={styles.Hint}>
                         <span className={styles.Hint__Text}>{Locales.NOT_REGISTERED}</span>

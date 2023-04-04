@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from './MoviesCard.module.css';
-import { getEmbedLink, minutesToString } from "../../utils/helpers";
+import { minutesToString } from "../../utils/helpers";
 import { CardModel } from "../../models/movies";
 import { Locales } from "../../utils/locales";
+import { Link } from "react-router-dom";
 
 type MoviesCardProps = {
     card: CardModel;
@@ -18,29 +19,17 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
                                                    handleLike,
                                                    saved = false,
                                                }) => {
-    const [showTrailer, setShowTrailer] = useState<boolean>(false);
-
     return (
         <li className={styles.Container}>
             <h1 className={styles.Name}>{card.nameRU}</h1>
             <div className={styles.Duration}>{minutesToString(card.duration)}</div>
-            <div className={styles.Thumbnail} onClick={() => {
-                setShowTrailer(true)
-            }}>
-                {
-                    showTrailer ?
-                        <iframe src={getEmbedLink(card.trailerLink)}
-                                title={card.nameRU}
-                                allowFullScreen
-                                className={styles.Thumbnail__Trailer}
-                        /> :
-                        <img className={styles.Thumbnail__Image}
-                             src={card.thumbnail}
-                             alt={card.nameRU}
-                             aria-label={card.nameRU}
-                        />
-                }
-            </div>
+            <Link className={styles.Thumbnail} to={card.trailerLink!} target='_blank'>
+                <img className={styles.Thumbnail__Image}
+                     src={card.thumbnail}
+                     alt={card.nameRU}
+                     aria-label={card.nameRU}
+                />
+            </Link>
             {
                 <button
                     className={`${styles.Button} ${isLiked

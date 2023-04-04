@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { MoviesCountLimitEnum, MoviesCountMoreEnum, WindowWidthEnum } from "../utils/constants";
 
 export type LimitCountType = {
     more: number;
@@ -10,29 +11,29 @@ export type LimitCountType = {
 export function useWidthDependsLimiter(defaultValues?: LimitCountType) {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [moviesCount, setMoviesCount] = useState<LimitCountType>(defaultValues ?? {
-        more: 3,
+        more: MoviesCountMoreEnum.DEFAULT,
         available: 0,
-        limit: 12,
+        limit: MoviesCountLimitEnum.DEFAULT,
     });
 
     function setCountValues() {
-        if (windowWidth >= 1080) {
+        if (windowWidth >= WindowWidthEnum.DEFAULT) {
             setMoviesCount({
                 ...moviesCount,
-                more: 3,
-                limit: Math.max(12, moviesCount.current ?? 0, moviesCount.available)
+                more: MoviesCountMoreEnum.DEFAULT,
+                limit: Math.max(MoviesCountLimitEnum.DEFAULT, moviesCount.current ?? 0, moviesCount.available)
             });
-        } else if (windowWidth >= 480) {
+        } else if (windowWidth >= WindowWidthEnum.TABLET) {
             setMoviesCount({
                 ...moviesCount,
-                more: 2,
-                limit: Math.max(8, moviesCount.current ?? 0, moviesCount.available)
+                more: MoviesCountMoreEnum.TABLET,
+                limit: Math.max(MoviesCountLimitEnum.TABLET, moviesCount.current ?? 0, moviesCount.available)
             });
-        } else if (windowWidth >= 320) {
+        } else if (windowWidth >= WindowWidthEnum.MOBILE) {
             setMoviesCount({
                 ...moviesCount,
-                more: 2,
-                limit: Math.max(5, moviesCount.current ?? 0, moviesCount.available)
+                more: MoviesCountMoreEnum.MOBILE,
+                limit: Math.max(MoviesCountLimitEnum.MOBILE, moviesCount.current ?? 0, moviesCount.available)
             });
         }
     }

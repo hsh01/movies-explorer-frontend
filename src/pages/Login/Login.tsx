@@ -8,6 +8,7 @@ import { ProtectedRouter, PublicRouter } from "../../utils/routes";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useAuth } from "../../contexts/AuthContext";
 import { ApiError } from "../../models/ApiError";
+import { isEmailRegex } from "../../utils/constants";
 
 const Login: React.FC = () => {
     const initialValues = useMemo(() => {
@@ -65,6 +66,7 @@ const Login: React.FC = () => {
                            onBlur={handleBlur}
                            error={errors.email}
                            value={values.email}
+                           pattern={isEmailRegex}
                     />
                     <Field label={Locales.PASSWORD}
                            type='password'

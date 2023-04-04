@@ -3,7 +3,6 @@ import styles from './MoviesCardList.module.css';
 import { MoviesCard } from "../MoviesCard";
 import { Preloader } from "../Preloader";
 import { CardModel } from "../../models/movies";
-import { ErrorMessagesEnum } from "../../utils/constants";
 
 type MoviesListProps = {
     movies: CardModel[];

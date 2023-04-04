@@ -1,5 +1,3 @@
-import { MoviesCount, MoviesSearchParamsEnum } from "../models/movies";
-
 export function minutesToString(minutes: number) {
     let minutesLabel = 'минут';
     if (minutes % 10 >= 2 && minutes % 10 <= 4) {

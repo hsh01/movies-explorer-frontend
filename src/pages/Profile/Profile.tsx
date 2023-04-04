@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Field } from "../../components/Field";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { api } from "../../utils/api/MainApi";
+import { isEmailRegex } from "../../utils/constants";
 
 const Profile: React.FC = () => {
     const {user, setUser, logout} = useAuth();
@@ -56,12 +57,13 @@ const Profile: React.FC = () => {
                                error={errors.email}
                                value={values.email}
                                view='inline'
+                               pattern={isEmailRegex}
                         />
                     </div>
                     <div className={styles.Buttons}>
                         <button className={styles.Button}
                                 type='submit'
-                                disabled={!isValid}
+                                disabled={!isValid || (values.name === user?.name && values.email === user?.email)}
                         >{Locales.EDIT}</button>
                         <button className={`${styles.Button} ${styles.Button_Type_Primary}`}
                                 onClick={logout}

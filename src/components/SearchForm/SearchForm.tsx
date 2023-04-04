@@ -1,10 +1,7 @@
-import React, { FormEvent, useEffect } from "react";
+import React, { FormEvent } from "react";
 import styles from './SearchForm.module.css';
 import { FilterCheckbox } from "../FilterCheckbox";
 import { Locales } from "../../utils/locales";
-import { MoviesSearchParamsEnum } from "../../models/movies";
-import { useSearchParams } from "react-router-dom";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type SearchFormProps = {
     validator: any;

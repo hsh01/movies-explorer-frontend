@@ -4,24 +4,22 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SearchForm } from "../../components/SearchForm";
 import { MoviesCardList } from "../../components/MoviesCardList";
-import { CardModel, MoviesSearchParamsEnum } from "../../models/movies";
+import { CardModel } from "../../models/movies";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useAuth } from "../../contexts/AuthContext";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { api } from "../../utils/api/MainApi";
 import { clean_words } from "../../utils/helpers";
-import { useSearchParamsState } from "../../hooks/useSearchParamsState";
 import { ErrorMessagesEnum } from "../../utils/constants";
 
 
 const SavedMovies: React.FC = () => {
 
-    const [isShortsOnly, setIsShortsOnly] = useLocalStorage<boolean>('isShortsOnly', false);
+    const [isShortsOnly, setIsShortsOnly] = useState<boolean>(false);
     const [savedMovies, setSavedMovies] = useState<CardModel[]>([]);
     const [displayedMovies, setDisplayedMovies] = useState<CardModel[]>([]);
     const [error, setError] = useState<string | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(true);
-    const [search, setSearch] = useSearchParamsState(MoviesSearchParamsEnum.SEARCH_STRING, '');
+    const [search, setSearch] = useState<string>('');
     const validator = useFormAndValidation({search});
     const {user} = useAuth();
 

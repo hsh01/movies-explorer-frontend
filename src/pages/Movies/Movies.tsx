@@ -4,16 +4,15 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SearchForm } from "../../components/SearchForm";
 import { MoviesCardList } from "../../components/MoviesCardList";
-import { CardModel, MoviesSearchParamsEnum } from "../../models/movies";
+import { CardModel } from "../../models/movies";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useAuth } from "../../contexts/AuthContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { beatfilmMoviesApi } from "../../utils/api/MoviesApi";
 import { api } from "../../utils/api/MainApi";
 import { clean_words } from "../../utils/helpers";
-import { useSearchParamsState } from "../../hooks/useSearchParamsState";
 import { REACT_APP_MOVIES_API_BASE_PATH } from "../../config";
-import { ErrorMessagesEnum } from "../../utils/constants";
+import { ErrorMessagesEnum, LocalStorageEnum } from "../../utils/constants";
 import { useWidthDependsLimiter } from "../../hooks/useWidthDependsLimiter";
 
 type MoviesProps = {
@@ -22,13 +21,13 @@ type MoviesProps = {
 
 const Movies: React.FC<MoviesProps> = ({saved = false}) => {
 
-    const [isShortsOnly, setIsShortsOnly] = useLocalStorage<boolean>('isShortsOnly', false);
-    const [allMovies, setAllMovies] = useLocalStorage<CardModel[]>('allMovies', [], 3600);
+    const [isShortsOnly, setIsShortsOnly] = useLocalStorage<boolean>(LocalStorageEnum.IS_SHORTS_ONLY, false);
+    const [allMovies, setAllMovies] = useLocalStorage<CardModel[]>(LocalStorageEnum.ALL_MOVIES, [], 3600);
+    const [displayedMovies, setDisplayedMovies] = useLocalStorage<CardModel[]>(LocalStorageEnum.DISPLAYED_MOVIES, []);
+    const [search, setSearch] = useLocalStorage(LocalStorageEnum.LAST_SEARCH, '');
     const [savedMovies, setSavedMovies] = useState<CardModel[]>([]);
-    const [displayedMovies, setDisplayedMovies] = useLocalStorage<CardModel[]>('movies', []);
     const [error, setError] = useState<string | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(true);
-    const [search, setSearch] = useSearchParamsState(MoviesSearchParamsEnum.SEARCH_STRING, '');
     const validator = useFormAndValidation({search});
     const {user} = useAuth();
     const {moviesCount, setMoviesCount} = useWidthDependsLimiter();
@@ -64,7 +63,11 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
         fetchAllMovies()
             .then(fetchSavedMovies)
             .catch(err => {
-                setError(err.toString());
+                let message = err.toString();
+                if (message === 'TypeError: Failed to fetch') {
+                    message = ErrorMessagesEnum.NO_CONNECTION;
+                }
+                setError(message);
             })
             .finally(() => setLoading(false));
     }, []);
@@ -127,7 +130,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
                     <div className={`${styles.InfoTip} ${styles.Error}`}>{error}</div>
                 }
                 {
-                    !loading && search && !displayedMovies?.length ?
+                    !loading && search && !displayedMovies?.length && !error ?
                         <span className={styles.InfoTip}>{ErrorMessagesEnum.NOTHING_FOUND}</span> :
                         <MoviesCardList saved={saved}
                                         loading={loading}

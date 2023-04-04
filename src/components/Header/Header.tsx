@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from './Header.module.css';
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ProtectedRouter, PublicRouter } from "../../utils/routes";
 import { Logo } from "../Logo";
 
@@ -17,7 +17,6 @@ enum MenuItems {
 
 const Header: React.FC<HeaderProps> = ({user, theme}) => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-    const {search} = useLocation();
     const menuItems = [
         {
             label: MenuItems.MAIN,
@@ -73,10 +72,7 @@ const Header: React.FC<HeaderProps> = ({user, theme}) => {
                                     {
                                         menuItems.map((item, index) => (
                                             (isMenuOpen || !item.hidden) &&
-                                            <NavLink to={{
-                                                pathname: item.to,
-                                                search: item.keepParams ? search : undefined
-                                            }}
+                                            <NavLink to={item.to}
                                                      key={index}
                                                      className={({isActive}) =>
                                                          `${styles.Button} ${styles.Button__MenuItem} ${isMenuOpen &&
