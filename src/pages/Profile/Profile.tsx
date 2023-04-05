@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './Profile.module.css';
 import { Header } from "../../components/Header";
 import { Locales } from "../../utils/locales";
@@ -6,11 +6,13 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Field } from "../../components/Field";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { api } from "../../utils/api/MainApi";
-import { isEmailRegex } from "../../utils/constants";
+import { InfoMessagesEnum, isEmailRegex } from "../../utils/constants";
+import { useAlert } from "../../contexts/AlertContext";
 
 const Profile: React.FC = () => {
     const {user, setUser, logout} = useAuth();
     const {values, handleChange, handleBlur, errors, setErrors, isValid} = useFormAndValidation(user);
+    const {infoTip, errorTip} = useAlert();
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const {email, name} = values;
@@ -22,10 +24,10 @@ const Profile: React.FC = () => {
                 .then((data) => {
                     const {email, name} = data;
                     setUser({...user, email, name})
+                    infoTip(InfoMessagesEnum.SAVED_SUCCESS);
                 })
                 .catch((err) => {
-                    console.log(err)
-                    setErrors(err)
+                    errorTip(err.body);
                 })
                 .finally();
         }
@@ -36,7 +38,7 @@ const Profile: React.FC = () => {
             <Header user={user} />
             <main className={styles.Container}>
                 <h1 className={styles.Title}>{Locales.HELLO}, {user!.name}!</h1>
-                <form onSubmit={handleSubmit} name='profile'>
+                <form className={styles.Form} onSubmit={handleSubmit} name='profile'>
                     <div className={styles.Fields}>
                         <Field label={Locales.NAME}
                                type='text'

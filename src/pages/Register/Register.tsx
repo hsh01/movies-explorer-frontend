@@ -10,6 +10,7 @@ import { api } from "../../utils/api/MainApi";
 import { ApiError } from "../../models/ApiError";
 import { isEmailRegex } from "../../utils/constants";
 import { useAuth } from "../../contexts/AuthContext";
+import { useAlert } from "../../contexts/AlertContext";
 
 const Register: React.FC = () => {
 
@@ -26,6 +27,7 @@ const Register: React.FC = () => {
         isValid,
         resetForm
     } = useFormAndValidation(initialValues);
+    const {errorTip} = useAlert();
 
     const {login} = useAuth();
     const navigate = useNavigate();
@@ -51,11 +53,12 @@ const Register: React.FC = () => {
             })
             .then(() => navigate(ProtectedRouter.MOVIES))
             .catch((err: ApiError) => {
-                setErrors({form: err.body ?? err.toString()});
-                console.log(err.body);
+                errorTip(err.body ?? err.toString());
                 return Promise.reject(err);
             })
-            .finally(() => setIsSubmitting(false));
+            .finally(() => {
+                setIsSubmitting(false);
+            });
     };
 
     return (

@@ -9,7 +9,8 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useAuth } from "../../contexts/AuthContext";
 import { api } from "../../utils/api/MainApi";
 import { clean_words } from "../../utils/helpers";
-import { ErrorMessagesEnum } from "../../utils/constants";
+import { ErrorMessagesEnum, MoviesEnum } from "../../utils/constants";
+import { useAlert } from "../../contexts/AlertContext";
 
 
 const SavedMovies: React.FC = () => {
@@ -22,6 +23,7 @@ const SavedMovies: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const validator = useFormAndValidation({search});
     const {user} = useAuth();
+    const {errorTip} = useAlert();
 
     useEffect(() => {
         setLoading(true);
@@ -32,11 +34,7 @@ const SavedMovies: React.FC = () => {
 
         fetchSavedMovies()
             .catch(err => {
-                let message = err.toString();
-                if (message === 'TypeError: Failed to fetch') {
-                    message = ErrorMessagesEnum.NO_CONNECTION;
-                }
-                setError(message);
+                errorTip(err.body ?? err.toString());
             })
             .finally(() => setLoading(false));
     }, []);
@@ -44,7 +42,7 @@ const SavedMovies: React.FC = () => {
     useEffect(() => {
         const tempMovies = savedMovies?.filter((item: CardModel) => {
             const isMovieNameFound = clean_words(search).every(v => clean_words(item.nameRU).some(m => m.includes(v)));
-            const isMovieShort = item.duration <= 40;
+            const isMovieShort = item.duration <= MoviesEnum.SHORT_MOVIE_LENGTH;
             return (!isShortsOnly || isMovieShort === isShortsOnly) && ((search && isMovieNameFound) || !search);
         });
         setDisplayedMovies([...tempMovies]);
@@ -58,8 +56,7 @@ const SavedMovies: React.FC = () => {
                 }
             })
             .catch((err) => {
-                console.log(err);
-                setError(err);
+                errorTip(err.body ?? err.toString());
             });
     }
 

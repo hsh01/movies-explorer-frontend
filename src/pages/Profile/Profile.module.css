@@ -9,6 +9,11 @@
     background-color: var(--bg-color-primary);
 }
 
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
 .Title {
     font-weight: 500;
     font-size: 24px;
@@ -19,7 +24,7 @@
 }
 
 .Fields {
-    margin-bottom: 210px;
+    margin-bottom: 179px;
 }
 
 .Field {

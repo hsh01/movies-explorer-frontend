@@ -9,6 +9,7 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useAuth } from "../../contexts/AuthContext";
 import { ApiError } from "../../models/ApiError";
 import { isEmailRegex } from "../../utils/constants";
+import { useAlert } from "../../contexts/AlertContext";
 
 const Login: React.FC = () => {
     const initialValues = useMemo(() => {
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
     const {user, login} = useAuth();
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
+    const {errorTip} = useAlert();
     if (user) {
         navigate(ProtectedRouter.MOVIES, {replace: true});
     }
@@ -44,8 +45,7 @@ const Login: React.FC = () => {
         login({email: values.email, password: values.password})
             .then(() => navigate(ProtectedRouter.MOVIES))
             .catch((err: ApiError) => {
-                console.log(err)
-                setErrors({form: err.body.message ?? err.toString()});
+                errorTip(err.body ?? err.toString());
                 return Promise.reject(err);
             })
             .finally(() => setIsSubmitting(false));
@@ -76,7 +76,10 @@ const Login: React.FC = () => {
                            value={values.password}
                     />
                 </div>
-                <div className={styles.Error}>{errors.form}</div>
+                {
+                    errors.form &&
+                    <div className={styles.Error}>{errors.form}</div>
+                }
                 <div className={styles.Buttons}>
                     <button type='submit'
                             className={styles.Button}

@@ -11,38 +11,43 @@ import { NotFound } from "../../pages/NotFound";
 import { AuthProvider } from "../../contexts/AuthContext";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { SavedMovies } from "../../pages/SavedMovies";
+import { AlertProvider } from "../../contexts/AlertContext";
+import { Alert } from "../Error";
 
 
 const App: React.FC = () => (
-    <AuthProvider>
-        <Routes>
-            <Route path={PublicRouter.MAIN} element={<Main />} />
-            <Route path={ProtectedRouter.MOVIES}
-                   element={
-                       <ProtectedRoute>
-                           <Movies />
-                       </ProtectedRoute>
-                   }
-            />
-            <Route path={ProtectedRouter.SAVED_MOVIES}
-                   element={
-                       <ProtectedRoute>
-                           <SavedMovies />
-                       </ProtectedRoute>
-                   }
-            />
-            <Route path={ProtectedRouter.PROFILE}
-                   element={
-                       <ProtectedRoute>
-                           <Profile />
-                       </ProtectedRoute>
-                   }
-            />
-            <Route path={PublicRouter.SIGNIN} element={<Login />} />
-            <Route path={PublicRouter.SIGNUP} element={<Register />} />
-            <Route path='*' element={<NotFound />} />
-        </Routes>
-    </AuthProvider>
+    <AlertProvider>
+        <AuthProvider>
+            <Alert />
+            <Routes>
+                <Route path={PublicRouter.MAIN} element={<Main />} />
+                <Route path={ProtectedRouter.MOVIES}
+                       element={
+                           <ProtectedRoute>
+                               <Movies />
+                           </ProtectedRoute>
+                       }
+                />
+                <Route path={ProtectedRouter.SAVED_MOVIES}
+                       element={
+                           <ProtectedRoute>
+                               <SavedMovies />
+                           </ProtectedRoute>
+                       }
+                />
+                <Route path={ProtectedRouter.PROFILE}
+                       element={
+                           <ProtectedRoute>
+                               <Profile />
+                           </ProtectedRoute>
+                       }
+                />
+                <Route path={PublicRouter.SIGNIN} element={<Login />} />
+                <Route path={PublicRouter.SIGNUP} element={<Register />} />
+                <Route path='*' element={<NotFound />} />
+            </Routes>
+        </AuthProvider>
+    </AlertProvider>
 );
 
 export default App;

@@ -12,8 +12,9 @@ import { beatfilmMoviesApi } from "../../utils/api/MoviesApi";
 import { api } from "../../utils/api/MainApi";
 import { clean_words } from "../../utils/helpers";
 import { REACT_APP_MOVIES_API_BASE_PATH } from "../../config";
-import { ErrorMessagesEnum, LocalStorageEnum } from "../../utils/constants";
+import { ErrorMessagesEnum, LocalStorageEnum, MoviesEnum } from "../../utils/constants";
 import { useWidthDependsLimiter } from "../../hooks/useWidthDependsLimiter";
+import { useAlert } from "../../contexts/AlertContext";
 
 type MoviesProps = {
     saved?: boolean;
@@ -31,6 +32,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
     const validator = useFormAndValidation({search});
     const {user} = useAuth();
     const {moviesCount, setMoviesCount} = useWidthDependsLimiter();
+    const {errorTip} = useAlert();
 
 
     useEffect(() => {
@@ -63,11 +65,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
         fetchAllMovies()
             .then(fetchSavedMovies)
             .catch(err => {
-                let message = err.toString();
-                if (message === 'TypeError: Failed to fetch') {
-                    message = ErrorMessagesEnum.NO_CONNECTION;
-                }
-                setError(message);
+                errorTip(err.body ?? err.toString());
             })
             .finally(() => setLoading(false));
     }, []);
@@ -82,8 +80,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
-                    setError(err);
+                    errorTip(err.body ?? err.toString());
                 });
         } else {
             api.createMovie(movie)
@@ -91,8 +88,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
                     setSavedMovies([...savedMovies, data]);
                 })
                 .catch((err) => {
-                    console.log(err);
-                    setError(err);
+                    errorTip(err.body ?? err.toString());
                 });
         }
     }
@@ -109,7 +105,7 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
     useEffect(() => {
         const tempMovies = allMovies?.filter((item: CardModel) => {
             const isMovieNameFound = clean_words(search).every(v => clean_words(item.nameRU).some(m => m.includes(v)));
-            const isMovieShort = item.duration <= 40;
+            const isMovieShort = item.duration <= MoviesEnum.SHORT_MOVIE_LENGTH;
             return search && (!isShortsOnly || isMovieShort === isShortsOnly) && ((search && isMovieNameFound));
         });
 
@@ -125,10 +121,6 @@ const Movies: React.FC<MoviesProps> = ({saved = false}) => {
                             isShort={isShortsOnly}
                             setIsShortsOnly={setIsShortsOnly}
                 />
-                {
-                    error &&
-                    <div className={`${styles.InfoTip} ${styles.Error}`}>{error}</div>
-                }
                 {
                     !loading && search && !displayedMovies?.length && !error ?
                         <span className={styles.InfoTip}>{ErrorMessagesEnum.NOTHING_FOUND}</span> :

@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useAlert } from "../contexts/AlertContext";
 
 export const useLocalStorage = <T>(keyName: string, defaultValue?: T, ttl?: number): [T, (v: T) => void] => {
+    const {errorTip} = useAlert();
+
     const [storedValue, setStoredValue] = useState<T>(() => {
         try {
             const value = window.localStorage.getItem(keyName);
@@ -19,8 +22,8 @@ export const useLocalStorage = <T>(keyName: string, defaultValue?: T, ttl?: numb
                 }));
                 return defaultValue;
             }
-        } catch (err) {
-            console.log(err);
+        } catch (err: any) {
+            errorTip(err.toString());
         }
         return defaultValue;
     });
@@ -34,8 +37,8 @@ export const useLocalStorage = <T>(keyName: string, defaultValue?: T, ttl?: numb
             } else {
                 window.localStorage.removeItem(keyName);
             }
-        } catch (err) {
-            console.log(err);
+        } catch (err: any) {
+            errorTip(err.toString());
         }
         setStoredValue(newValue);
     };
