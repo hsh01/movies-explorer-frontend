@@ -17,20 +17,21 @@ enum MenuItems {
 
 const Header: React.FC<HeaderProps> = ({user, theme}) => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
     const menuItems = [
         {
             label: MenuItems.MAIN,
             to: PublicRouter.MAIN,
-            hidden: true
+            hidden: true,
         },
         {
             label: MenuItems.MOVIES,
             to: ProtectedRouter.MOVIES,
+            keepParams: true,
         },
         {
             label: MenuItems.SAVED_MOVIES,
             to: ProtectedRouter.SAVED_MOVIES,
+            keepParams: true,
         },
     ];
 

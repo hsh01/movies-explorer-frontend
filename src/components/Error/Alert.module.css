@@ -1,0 +1,60 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 5vh;
+    right: 5vw;
+    z-index: 3;
+    row-gap: 5px;
+    background: rgba(0,0,0,.5);
+}
+
+.Row {
+    border-radius: 3px;
+    border: 1px solid;
+    display: flex;
+}
+
+.Message {
+    width: 300px;
+    padding: 10px;
+}
+
+.Error {
+    border-color: var(--bg-color-pink);
+    color: var(--bg-color-pink);
+    font-weight: 500;
+    font-size: 14px;
+    box-sizing: border-box;
+
+}
+
+.Info {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.Button {
+    background: url(../../images/remove.svg) no-repeat center;
+    fill: var(--bg-color-pink);
+    border: none;
+    width: 30px;
+    padding: 0;
+}
+
+.Button_Error {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(98%) saturate(3978%) hue-rotate(328deg) brightness(99%) contrast(88%);
+}
+
+.Button_Info {
+    filter: brightness(0) saturate(100%) invert(78%) sepia(13%) saturate(1872%) hue-rotate(90deg) brightness(90%) contrast(99%);
+}
+
+@media screen and (max-width: 768px) {
+    .Message {
+    max-width: 75vw;
+    }
+}

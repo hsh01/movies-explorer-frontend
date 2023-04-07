@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './NotFound.module.css';
 import { Locales } from "../../utils/locales";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NotFound: React.FC = () => {
     const navigate = useNavigate();

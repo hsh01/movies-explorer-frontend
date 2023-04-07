@@ -46,6 +46,10 @@
     cursor: pointer;
 }
 
+.Button:disabled {
+    opacity: .5;
+}
+
 .Hint {
     display: flex;
     line-height: 17px;
@@ -63,6 +67,10 @@
 
 .Hint__Link:hover {
     text-decoration: underline;
+}
+
+.Error {
+    color: var(--bg-color-pink);
 }
 
 @media screen and (max-width: 320px) {

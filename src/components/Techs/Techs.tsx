@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Techs.module.css';
-import {Section} from "../Section";
+import { Section } from "../Section";
 
 const Techs: React.FC = () => {
     const techs = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB'];

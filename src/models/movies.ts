@@ -1,21 +1,19 @@
 export type CardModel = {
-    id?: number;
+    _id?: string;
+    movieId: string;
     nameRU: string;
+    nameEN: string;
     thumbnail: string;
     duration: number;
-    liked?: boolean;
+    trailerLink?: string;
+    country: string;
+    director: string;
+    year: string;
+    description: string;
+    image: string;
 }
 
-export type MoviesCardProps = {
-    card: CardModel;
-    movieListType?: MovieListType;
-}
 
-export enum MovieListType {
-    ALL = 'all',
-    SAVED = 'saved'
-}
-
-export type MoviesListProps = {
-    movieListType?: MovieListType;
+export enum MoviesSearchParamsEnum {
+    SEARCH_STRING = 'q',
 }

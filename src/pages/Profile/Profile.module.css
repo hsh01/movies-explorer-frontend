@@ -9,6 +9,11 @@
     background-color: var(--bg-color-primary);
 }
 
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
 .Title {
     font-weight: 500;
     font-size: 24px;
@@ -19,7 +24,7 @@
 }
 
 .Fields {
-    margin-bottom: 210px;
+    margin-bottom: 179px;
 }
 
 .Field {
@@ -55,11 +60,19 @@
     font-size: 13px;
     line-height: 16px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--color);
+}
+
+.Button:disabled {
+    opacity: .5;
 }
 
 .Button_Type_Primary {
     font-weight: 500;
-    color: #FF004D;
+    color: var(--bg-color-pink);
 }
 
 

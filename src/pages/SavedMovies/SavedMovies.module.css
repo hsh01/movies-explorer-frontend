@@ -8,6 +8,7 @@
     margin: 0 auto 160px;
 }
 
+
 .ButtonMore {
     padding: 0;
     margin: 0;
@@ -33,6 +34,10 @@
     padding: 20px;
 }
 
+.Error {
+    color: var(--bg-color-pink);
+}
+
 @media screen and (max-width: 768px) {
     .Container {
         max-width: 768px;
@@ -46,9 +51,11 @@
     .Container {
         max-width: 320px;
     }
+
     .Main {
         margin-bottom: 60px;
     }
+
     .ButtonMore {
     }
 }

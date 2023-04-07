@@ -12,12 +12,26 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
     padding: 18px 0;
+    max-width: 360px;
 }
 
 .Thumbnail {
     grid-column: 1 / -1;
-    width: 100%;
     grid-area: image;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.Thumbnail__Image {
+    width: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.Thumbnail__Trailer {
+    border: none;
+    height: 200px;
+    width: 100%;
 }
 
 .Name {
@@ -60,4 +74,20 @@
     align-self: self-start;
     justify-self: right;
     padding-right: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .Container {
+        max-width: initial;
+    }
+
+    .Thumbnail {
+        max-height: 190px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Thumbnail {
+        max-height: 168px;
+    }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './AboutProject.module.css';
-import {Section} from "../Section";
+import { Section } from "../Section";
 
 const AboutProject: React.FC = () => {
     return (

@@ -1,5 +1,11 @@
+# Демо
+https://hsh01.github.io/movies-explorer-frontend
+
 # Макет
 https://www.figma.com/file/jrCvKhqiBhYRnYGYdJjpsp/Diploma-(Copy)?node-id=344%3A0&t=ZKwjveHHysxQ0eP1-0
+
+# PR
+https://github.com/hsh01/movies-explorer-frontend/pull/2
 
 ## Использованные технологии
 

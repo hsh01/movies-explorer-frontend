@@ -7,3 +7,24 @@ export function minutesToString(minutes: number) {
     }
     return `${minutes} ${minutesLabel}`;
 }
+
+export function clean(target: string) {
+    return target.toLowerCase()
+        .replace(/[^a-zA-ZА-ЯЁёа-я0-9 ]/g, '')
+        .trim()
+        .replace(/\s+/, ' ');
+}
+
+export function clean_words(target: string) {
+    if (target) {
+        return clean(target).split(' ');
+    }
+    return []
+}
+export function getEmbedLink(link?: string) {
+    if (link) {
+        const url = new URL(link);
+        const urlParams = new URLSearchParams(url.search);
+        return `https://www.youtube.com/embed/${urlParams.get('v')}?mute=1`;
+    }
+}
